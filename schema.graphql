@@ -1,0 +1,13 @@
+type ethvUpdate @entity {
+    id: ID!
+    blocknumber: BigInt!
+    timestamp: BigInt!
+    ethv: BigInt!
+}
+
+type ETHV @entity {
+    id: ID!
+    latestUpdate: ethvUpdate!
+    updates: [ethvUpdate!]!
+    numUpdates: BigInt!
+}

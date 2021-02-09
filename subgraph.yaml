@@ -1,0 +1,28 @@
+specVersion: 0.0.2
+description: volmex.finance is a family of volatility indices and non-custodial trading platform built on Ethereum.
+repository: https://github.com/ThierryBleau/volmex_subgraph
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum/contract
+    name: ethvindexv1
+    network: mainnet
+    source:
+      address: '0xe10bF493577B11f2161b7505b6a707186BFB6208'
+      abi: EthVIndexV1
+      startBlock: 11400470
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.3
+      language: wasm/assemblyscript
+      file: ./src/mapping.ts
+      entities:
+        - ETHV
+        - ethvUpdate
+      abis:
+        - name: EthVIndexV1
+          file: ./abis/ethvindexv1.json
+      eventHandlers:
+        - event: Publish(string ethv, uint256 timestamp)
+          handler: handlePublish
+  

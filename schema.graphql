@@ -7,7 +7,7 @@ type ethvUpdate @entity {
 
 type ETHV @entity {
     id: ID!
-    latestUpdate: ethvUpdate!
-    updates: [ethvUpdate!]!
+    latestUpdate: ethvUpdate
+    updates: [ethvUpdate]!
     numUpdates: BigInt!
 }
